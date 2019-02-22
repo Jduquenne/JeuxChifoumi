@@ -19,7 +19,7 @@ function getOrdiChoice() {
 
 function convertToWord(letter) {
     if (letter === "p") return "Pierre";
-    if (letter === "f") return "Feuille";
+    if (letter === "f") return "Papier";
     if (letter === "c") return "Ciseaux";
     if (letter === "s") return "Spock";
     return "Lézard";
@@ -53,7 +53,7 @@ function genreAttaque(joueurChoix, ordiChoix) {
 
         case "pc":
         case "cp":
-            return "emousse";
+            return "émousse";
 
 
         case "sf":
@@ -63,7 +63,7 @@ function genreAttaque(joueurChoix, ordiChoix) {
 
         case "cl":
         case "lc":
-            return "decapite";
+            return "décapite";
 
 
         case "sp":
@@ -89,23 +89,23 @@ function gagne(joueurChoix, ordiChoix) {
     scoreJoueurSpan.innerHTML = scoreJoueur;
     scoreOrdiSpan.innerHTML = scoreOrdi;
     const joueurMot = "joueur".fontsize(3).fontcolor("#E25B1A");
-    const ordiMot = "ordinateur".fontsize(3).fontcolor("#E25B1A");
-    resultatP.innerHTML = `${convertToWord(joueurChoix)}${joueurMot} ${genreAttaque(joueurChoix, ordiChoix)} ${convertToWord(ordiChoix)}${ordiMot}`;
+    const ordiMot = "ordinateur".fontsize(3).fontcolor("#E25B1A").toLowerCase();
+    resultatP.innerHTML = `${convertToWord(joueurChoix)} ${joueurMot} ${genreAttaque(joueurChoix, ordiChoix)} ${convertToWord(ordiChoix)} ${ordiMot}`;
     resultatWin.innerText = `Bien joué ! 👍`
 }
 function perdu(joueurChoix, ordiChoix) {
     scoreOrdi++;
     scoreJoueurSpan.innerHTML = scoreJoueur;
     scoreOrdiSpan.innerHTML = scoreOrdi;
-    const joueurMot = "joueur".fontsize(3).fontcolor("#E25B1A").style.fontStyle = "italic";
-    const ordiMot = "ordinateur".fontsize(3).fontcolor("#E25B1A").style.fontStyle = "italic";
-    resultatP.innerHTML = `${convertToWord(ordiChoix)}${ordiMot} ${genreAttaque(joueurChoix, ordiChoix)} ${convertToWord(joueurChoix)}${joueurMot}.`;
+    const joueurMot = "joueur".fontsize(3).fontcolor("#E25B1A").toLowerCase();
+    const ordiMot = "ordinateur".fontsize(3).fontcolor("#E25B1A");
+    resultatP.innerHTML = `${convertToWord(ordiChoix)} ${ordiMot} ${genreAttaque(joueurChoix, ordiChoix)} ${convertToWord(joueurChoix)} ${joueurMot}.`;
     resultatWin.innerText = `Dommage ... 👎`
 }
 function egalite(joueurChoix, ordiChoix) {
-    const joueurMot = "joueur".fontsize(3).fontcolor("#E25B1A").style.fontStyle = "italic";
-    const ordiMot = "ordinateur".fontsize(3).fontcolor("#E25B1A").style.fontStyle = "italic";
-    resultatP.innerHTML = `${convertToWord(joueurChoix)}${joueurMot} ${genreAttaque(joueurChoix, ordiChoix)} ${convertToWord(ordiChoix)}${ordiMot}.`;
+    const joueurMot = "joueur".fontsize(3).fontcolor("#E25B1A");
+    const ordiMot = "ordinateur".fontsize(3).fontcolor("#E25B1A").toLowerCase();
+    resultatP.innerHTML = `${convertToWord(joueurChoix)} ${joueurMot} ${genreAttaque(joueurChoix, ordiChoix)} ${convertToWord(ordiChoix)} ${ordiMot}.`;
     resultatWin.innerText = `Egalité !`
 }
 
